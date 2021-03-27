@@ -1,0 +1,53 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+.switch span{
+    color:#ccc;
+    font-size: 1.4em;
+    cursor: pointer;
+}
+
+.switch span.active{
+    color:rgb(59, 161, 165);
+}
+
+form {
+    width: 12rem;
+    margin: 2rem 0 0;
+}
+
+
+form.input{
+    position:relative;
+    width: 100%;
+    margin: 2rem 0;
+}
+
+.input input{
+    outline:none;
+    width:100%;
+    border: none;
+    border-bottom: .1rem soild rgb(59, 161, 165);
+}
+
+.input ::after{
+    content:atrr(placeholder);
+    position:absolute;
+    left:0;
+    top:-10%;
+    font-size: 1.4rem;
+    color:rgb(59, 161, 165);
+    transition: .3s;
+}
+
+.input.focus::after{
+    top:-70%;
+    font-size:1rem;
+}
+
+.login .input#email,
+.login .input#repeatPasswords{
+    display: none;
+}

@@ -1,0 +1,97 @@
+body 
+{
+	background-image:url('../Photos/bg.png');
+	background-color:#cccccc;
+}
+.form-group.formcontrol{
+    outline:none;
+    width:100%;
+    border: none;
+    border-bottom: .1rem soild rgb(59, 161, 165);
+}
+.col-md-6 column.form-group.formcontrol,label{
+    border-bottom: .1rem solid rgb(207, 157, 133);
+}
+
+.col-md-6 column  .form-group,#exampleInputUsername,#exampleInputPassword1,#exampleInputPassword2,#exampleInputEmail{
+    border-style:solid;
+    border-width: 3px;
+	border-color:#f0ee9a;
+}
+
+
+.col-md-6.form-group{
+    display: flex;
+    margin-top: 50px;
+    margin-left: 100px;
+}
+.form-group.formcontrol{
+    width: 100px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    cursor:pointer;
+    color: #333333;
+    border: 1px solid #eeeeee;
+    position: relative;
+    transition: 0.6s linear;
+}
+.form-group.formcontrol:hover{
+    color: #ffffff;
+}
+.form-group.formcontrol:after{
+    width: 0;
+    cursor:pointer;
+    position: absolute;
+    content: "";
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    background: #95f0e8;
+    transition: 0.6s linear;
+}
+.form-group.formcontrol:hover:after{
+    width: 100px;
+}
+
+/*button*/
+.btn{
+    position: relative;
+    width: auto;
+    min-width: 120px;
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+    background: #6ed1e2;
+    cursor: pointer;
+    border-radius: 4px;
+    border: none;
+}
+
+.btn:after,.btn:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background: #6ed1e2;
+    z-index:-2;
+    border-radius: 4px;
+}
+
+.btn:hover{
+    z-index:1;
+    background:transparent;
+}            
+
+.btn:before {
+    transition: .3s;
+    background: #b7ecd4;
+    z-index:-1;
+}          
+
+.btn:hover:after,.btn:hover:before {
+    width: 100%;
+}

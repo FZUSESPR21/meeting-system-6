@@ -4,14 +4,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class userDao{
+public class UserDao {
     Connection conn = null;
     ArrayList<User> list = new ArrayList<User>();
 
 
     public boolean findUser(User user){
         boolean ishave = false;
-        String sql = "select * from users from where username = "+ "\'" +user.getUsername() + "\'" +";";
+        String sql = "select * from users from where username = "+ "\"" +user.getUsername() + "\"" +";";
         try {
             conn = DBUtil.getConnection();
             Statement stmt = conn.createStatement();
@@ -24,7 +24,7 @@ public class userDao{
     return ishave;
     }
     public User findUser(String username){
-        String sql = "select * from users where username = "+ "\'" +username + "\'" +";";
+        String sql = "select * from users where username = "+ "\"" +username + "\"" +";";
         User user = new User();
         {
             try {
@@ -44,13 +44,13 @@ public class userDao{
     return user;
     }
     public void addUser(User user){
-        String sql = "insert into users values" + "(" + "\'" + user.getUsername() + "\'"+","+ "\'"+user.getPassword()+ "\'"+","+ "\'"+user.getIdentity()+ "\'"+");";
-
+        String sql = "insert into users values" + "(" + "\"" + user.getUsername() + "\""+","+ "\""+user.getPassword()+ "\""+","+ "\""+user.getIdentity()+ "\""+");";
+        //System.out.println(sql);
         {
             try {
                 conn = DBUtil.getConnection();
                 Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql);
+                stmt.execute(sql);
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
