@@ -41,8 +41,8 @@ public class AddMessage extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String req = request.getReader().readLine();
-		//JSONObject jo = JSONObject.parseObject(req);
-		JSONObject jo = JSONObject.parseObject("{\"message\":\"1\",\"forumname\":\"3\"}");
+		JSONObject jo = JSONObject.parseObject(req);
+		//JSONObject jo = JSONObject.parseObject("{\"message\":\"1\",\"forumname\":\"3\"}");
 		Message message = new Message(-1,jo.getString("message"),jo.getString("forumname"));
 		MessagesDao messagesDao = new MessagesDao();
 		boolean isSuccess = messagesDao.addMessage(message);
