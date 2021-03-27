@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,11 +41,14 @@ public class AddMessage extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String req = request.getReader().readLine();
-		JSONObject jo = JSONObject.parseObject(req);
-		Message message = new Message(0,jo.getString("message"),jo.getString("forumname"));
+		//JSONObject jo = JSONObject.parseObject(req);
+		JSONObject jo = JSONObject.parseObject("{\"message\":\"1\",\"forumname\":\"3\"}");
+		Message message = new Message(-1,jo.getString("message"),jo.getString("forumname"));
 		MessagesDao messagesDao = new MessagesDao();
-		messagesDao.addMessage(message);
-		
+		boolean isSuccess = messagesDao.addMessage(message);
+		PrintWriter out = response.getWriter();
+		if (isSuccess)	out.write("{\"result\":\"success\"}");
+		else out.write("{\"result\":\"fail\"}");
 		
 	}
 
