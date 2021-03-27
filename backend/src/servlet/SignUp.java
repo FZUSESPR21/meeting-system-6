@@ -1,6 +1,9 @@
-package com.uestc.www.servlets;
-import Dao.UserDao;
-import Dao.UserDaoImpl;
+package servlets;
+
+import com.alibaba.fastjson.JSONObject;
+import dao.UserDao;
+import dao.UserDaoImpl;
+import domain.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -9,11 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import com.alibaba.fastjson.*;
-import domain.User;
-
 //@WebServlet("/hello")
-public class HelloServlet extends HttpServlet {
+public class SignUp extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         doPost(request,response);
@@ -32,9 +32,9 @@ public class HelloServlet extends HttpServlet {
         out = resp.getWriter();
         if(userDao.addUser(user))
         {
-            out.write("{\\\"结果\\\":\\\"注册成功\\\"}");
+            out.write("{\"结果\":\"注册成功\"}");
         }
-        else out.write("{\\\"结果\\\":\\\"注册失败\\\"}");
+        else out.write("{\"结果\":\"注册失败\"}");
     }
 
 }
