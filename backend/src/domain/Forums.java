@@ -3,6 +3,18 @@ public class Forums {
     private String theme;
     private String chairman;
     private String time;
+    public Forums(String a,String b,String c,String d){
+        forumnama = a;
+        theme = b;
+        chairman = c;
+        time = d;
+    }
+    public Forums(){
+        forumnama = "0";
+        theme = "0";
+        chairman = "0";
+        time = "0";
+    }
     public String getForumnama(){
         return forumnama;
     }
