@@ -9,24 +9,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 
+import dao.ForumsDao;
 import dao.UserDao;
-
+import domain.Forums;
 import domain.User;
 
 /**
- * Servlet implementation class Login
+ * Servlet implementation class Forum
  */
-@WebServlet("/Login")
-public class Login extends HttpServlet {
+@WebServlet("/Forum")
+public class Forum extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Login() {
+    public Forum() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -44,19 +44,16 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String req = request.getReader().readLine();
 		JSONObject jo = JSONObject.parseObject(req);
-		//JSONObject jo = JSONObject.parseObject("{\"username\":\"1\",\"password\":\"3\"}");
-		User user = new User();
-		user.setUsername(jo.getString("username"));
-		user.setPassword(jo.getString("password"));
-		user.setIdentity(null);
-		UserDao userDao = new UserDao();
-		boolean isUser = userDao.findUser(user);
+		//JSONObject jo = JSONObject.parseObject("{\"forumname\":\"bb\"}");
 		
-		request.getSession().setAttribute("user", user);
+		String forumname = jo.getString("forumname");
+		ForumsDao forumsDao = new ForumsDao();
+		Forums forums = forumsDao.findForums(forumname);
+
 		response.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();
-		if (isUser)	out.write("{\"result\":\"success\"}");
-		else out.write("{\"result\":\"fail\"}");
+		//System.out.println(JSONObject.toJSONString(forums));
+		out.write(JSONObject.toJSONString(forums));
 	}
 
 }

@@ -19,32 +19,26 @@
 <nav th:fragment="menu(n)" class="ui inverted attached segment segment m-padded-tb-mini m-shadow-small">
     <div class="ui container">
         <div class="ui inverted secondary stackable menu">
-            <h2 class="ui teal header item">顶会论文网</h2>
+            <h2 class="ui teal header item">会议论坛</h2>
             <a href="#" th:href="@{/}" class="m-item item m-mobile-hide" th:classappend="${n==1}? 'active'"><i class="small home icon"></i><span th:text="#{index.home}">首页</span></a>
-            <a href="#" th:href="@{/about}" class="m-item item m-mobile-hide" th:classappend="${n==2}? 'active'"><i class="small info icon"></i>论坛信息</span></a>
-            
-        <div>
-            <div></div>
-            <div></div>
-        </div>
-		<ul class="nav navbar-nav">
-			<li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-					个人信息
-					<b class="caret"></b>
-				</a>
-				<ul class="dropdown-menu">
-					<li><a href="login.html">登录</a></li>
-					<li><a href="signup.html">注册</a></li>
-					<li class="divider"></li>
-					<li><a href="#">注销</a></li>
-				</ul>
-			</li>
-		</ul>
-	</div>
-        
+            <a href="UserInfo.html" th:href="@{/about}" class="m-item item m-mobile-hide" th:classappend="${n==2}? 'active'"><i class="small idea icon"></i>参会者信息</span></a>
+            <a href="postMessage.html" th:href="@{/about}" class="m-item item m-mobile-hide" th:classappend="${n==3}? 'active'"><i class="small tags icon"></i>发布信息</span></a>
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="small cloud icon"></i>个人信息
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="login.html">登录</a></li>
+                        <li><a href="signup.html">注册</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">注销</a></li>
+                    </ul>
+                </li>
+            </ul>
+	    </div>  
     </div>
-    
 </nav>
 
 <!--中间内容-->
@@ -77,13 +71,13 @@
                                         <div class="ui mini horizontal link list">
                                             <div class="item">
                                                 <img src="../Photos/凝视.jpg" alt="" class="ui avatar image" th:src="@{${blog.user.avatar}}"  >
-                                                <div class="content"> <a href="#" th:href="@{/about}" class="header" th:text="${blog.user.nickname}">论坛发布者</a></div>
+                                                <div class="content"> <a href="#" th:href="@{/about}" class="header" th:text="${blog.user.nickname}">论坛主题</a></div>
                                             </div>
                                             <div class="item">
-                                                <i class="calendar icon"></i><span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}">发布日期</span>
+                                                <i class="calendar icon"></i><span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}"> 发布日期</span>
                                             </div>
                                             <div class="item">
-                                                <i class="eye icon"></i><span th:text="${blog.views}">浏览次数</span>
+                                                <i class="eye icon"></i><span th:text="${blog.views}"> 分论坛主席</span>
                                             </div>
                                         </div>
                                     </div>

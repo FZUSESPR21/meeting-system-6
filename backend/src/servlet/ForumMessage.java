@@ -52,7 +52,7 @@ public class ForumMessage extends HttpServlet {
 		
 		response.setCharacterEncoding("utf-8");
 		String json=JSON.toJSONString(messages);
-		System.out.println(json);
+		//System.out.println(json);
 		response.getWriter().write(json);;
 		
 	}
