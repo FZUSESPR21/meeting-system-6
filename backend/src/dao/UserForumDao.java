@@ -32,7 +32,7 @@ public class UserForumDao {
         return b;
     }
 
-    public ArrayList<User> searchUserName(String forumName) {
+    public ArrayList<User> searchUsers(String forumName) {
         Connection conn = null;
         Statement stmt = null;
         ResultSet rs = null;
