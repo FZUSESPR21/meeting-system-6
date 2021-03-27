@@ -1,11 +1,7 @@
 package dao;
 import java.sql.*;
 import java.util.ArrayList;
-
-import domain.Forums;
-import domain.Message;
-import domain.User;
-import domain.UserForum;
+import domain.*;
 
 public class UserForumDao {
     public boolean addUserForum(UserForum uf) {
@@ -97,5 +93,55 @@ public class UserForumDao {
             DBUtil.close(rs,stmt,conn);
         }
         return forum;
+    }
+    
+    public ArrayList<Forums> searchForums(String userName) {
+        Connection conn = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+        ArrayList<Forums> forums = new ArrayList<Forums>();
+        try{
+            conn = DBUtil.getConnection();
+            stmt = conn.createStatement();
+
+            String sql = "select * from user_forum where username=" + "\'" + userName + "\'";
+
+            rs = stmt.executeQuery(sql);
+            Forums forums2 = new Forums();
+            while(rs.next()){
+                String forumName = rs.getString(2);
+                forums2.setForumnama(forumName);
+                forums.add(forums2);
+            }
+
+        }
+        catch (Exception e){
+
+        }
+        finally {
+            DBUtil.close(rs,stmt,conn);
+        }
+        return forums;
+    }
+    
+    public void deleteUserForum(UserForum uf) {
+        Connection conn = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+        try{
+            conn = DBUtil.getConnection();
+            String sql = "delete from user_forum where username = \"?\" and forumname = \"?\"";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, uf.getUserName());
+            ps.setString(2, uf.getForumName());
+            ps.execute();
+        }
+        catch (Exception e){
+
+        }
+        finally {
+            DBUtil.close(rs,stmt,conn);
+        }
     }
 }
