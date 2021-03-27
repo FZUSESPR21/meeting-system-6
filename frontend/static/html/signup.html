@@ -2,32 +2,31 @@
 <html>
     <head>
         <title>sign up</title>
-        <link rel="stylesheet" href="../CSS/style1.css">
-        <link rel="stylesheet" href="../CSS/style2.css">
-        <script></script>
+        <link rel="stylesheet" href="../css/style1.css">
+        <link rel="stylesheet" href="../css/style2.css">
+        <script src="../js/vue.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     </head>
     <body>
         <div class="container">
             <div class="row clearfix">
                 <div class="col-md-12 column">
                     <div class="row clearfix">
-                        <div class="col-md-6 column">
-                            <img alt="140x140" src="../Photos/凝视.jpg" class="img-thumbnail" />
-                        </div>
-                        <div class="col-md-6 column">
+<!--                        <div class="col-md-6 column">-->
+<!--                            <img alt="140x140" src="../Photos/凝视.jpg" class="img-thumbnail" />-->
+<!--                        </div>-->
+                        <div class="col-md-6 column" id="form2">
                             <form role="form">
                                 <div class="form-group">
-                                    <label for="exampleInputUsername">Username</label><input type="username" class="form-control" id="exampleInputUsername" />
+                                    <label for="exampleInputUsername">Username</label><input type="text" class="form-control" id="exampleInputUsername" v-model="username" />
                                </div>
                                 <div class="form-group">
-                                     <label for="exampleInputPassword1">Password</label><input type="password" class="form-control" id="exampleInputPassword1" />
+                                     <label for="exampleInputPassword1">Password</label><input type="password" class="form-control" id="exampleInputPassword1" v-model="password1"/>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputPassword2">Repeat</label><input type="password" class="form-control" id="exampleInputPassword2" />
+                                    <label for="exampleInputPassword2">Repeat</label><input type="password" class="form-control" id="exampleInputPassword2" v-model="password2"/>
                                </div>
-                                <div class="checkbox">
-                                     <label><input type="checkbox" />Check me out</label>
-                                </div> <button type="submit" class="btn btn-default">Sign Up</button>
+                                <button type="submit" class="btn btn-default" @click="signup">Sign Up</button>
                             </form>
                         </div>
                     </div>
@@ -35,4 +34,5 @@
             </div>
         </div>
     </body>
+<script src="../js/signup.js"></script>
 </html>

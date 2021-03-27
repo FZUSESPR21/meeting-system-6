@@ -1,16 +1,16 @@
-let url = 'http://localhost:8080/MyShop_war_exploded/User';
+let url = 'http://www.wuzinian.top/backend/User';
 
 var sign_up = new Vue({
     el: '#form2',
     data: {
         list: [],
-        username: '',
+        username:'',
         password1:'',
         password2:''
     },
     methods: {
         signup:function () {
-            // alert(this.username+this.password1)
+             // alert(this.username+this.password1)
             // 传送的数据为json格式
             let data = JSON.stringify({
                 username: this.username,
@@ -27,11 +27,14 @@ var sign_up = new Vue({
                 // 获取服务端返回的数据
                 vm.$data.list = response.data;
                 //判断逻辑
-                // if(true){
-                //     window.location.href="static/html/study.html";
-                // }else{
-                //     //....
-                // }
+                //判断逻辑
+                if(data.result=='success'){
+                    window.location.href="static/html/index.html";
+                }else{
+                    alert("账号或密码错误");
+                    window.location.href="static/html/login.html";
+
+                }
             }).catch(function (error) {
                 console.log(error);
             });

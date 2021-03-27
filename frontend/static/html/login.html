@@ -1,34 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
     <title>login</title>
-    <link rel="stylesheet" href="../CSS/style1.css">
-    <link rel="stylesheet" href="../CSS/style2.css">
+    <link rel="stylesheet" href="../css/style1.css">
+    <link rel="stylesheet" href="../css/style2.css">
+	<script src="../js/vue.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
 <div class="container">
 	<div class="row clearfix">
 		<div class="col-md-12 column">
 			<div class="row clearfix">
-				<div class="col-md-6 column">
-					<img alt="140x140" src="../Photos/凝视.jpg" class="img-thumbnail" />
-				</div>
-				<div class="col-md-6 column">
+<!--				<div class="col-md-6 column">-->
+<!--					<img alt="140x140" src="../photos/凝视.jpg" class="img-thumbnail" />-->
+<!--				</div>-->
+				<div class="col-md-6 column" id="form1">
 					<form role="form">
 						<div class="form-group">
-							 <label id="username"for="exampleInputUsername">Username</label><input type="username" class="form-control" id="exampleInputUsername" />
+							 <label id="username" for="exampleInputUsername">Username</label><input type="text" v-model="username" class="form-control" id="exampleInputUsername" />
 						</div>
 						<div class="form-group">
-							 <label for="exampleInputPassword1">Password</label><input type="password" class="form-control" id="exampleInputPassword1" />
+							 <label for="exampleInputPassword1">Password</label><input type="password" v-model="password" class="form-control" id="exampleInputPassword1" />
 						</div>
-						<div class="checkbox">
-							 <label><input type="checkbox" />Check me out</label>
-						</div> 
-					</form> <button type="button" class="btn">L o g i n</button> <button type="button" class="btn">Sign Up</button>
+					</form>
+					<button  class="btn" @click="login">L o g i n</button>
+					<button  class="btn" @click="func">Sign Up</button>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+<script src="../js/login.js"></script>
 </body>
 </html>
