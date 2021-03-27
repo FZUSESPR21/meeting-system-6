@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
         import javax.servlet.http.HttpServletRequest;
         import javax.servlet.http.HttpServletResponse;
 
+import com.alibaba.fastjson.JSONObject;
+
 import dao.MessagesDao;
 
 import java.io.IOException;
@@ -27,6 +29,7 @@ public class ShowMessage extends HttpServlet {
         List<Message> messages = messageDao.getAllMessages();
         PrintWriter out = null;
         out = resp.getWriter();
+        JSONObject.toJSONString(messages);
         out.write("user:[");
         int i=0;
         for(Message message : messages)

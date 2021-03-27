@@ -3,6 +3,7 @@ package servlet;
 import com.alibaba.fastjson.JSON;
 
 import dao.UserForumDao;
+import domain.Forums;
 import domain.Message;
 import domain.User;
 
@@ -29,8 +30,8 @@ public class ShowUsers  extends HttpServlet {
         UserForumDao userforumdao = new UserForumDao();
         Forums forums =  userforumdao.searchForum(user.getUsername());
         //下面是将选了该分会用户数转变为jaso语句传递给客户端
-        UserForumDao userForunmDao = new UserForumDao();
-        List<User> users= userForunmDao.SearchUsers(forums.getForumnama(user));
+        UserForumDao userforumdao1 = new UserForumDao();
+        List<User> users= userforumdao1.searchUsers(forums.getForumnama());
         PrintWriter out = null;
         out = resp.getWriter();
         out.write("{\"num\":\""+users.size()+"\",");
@@ -44,7 +45,7 @@ public class ShowUsers  extends HttpServlet {
             }
             else
                 out.write("\""+user1.getUsername()+"\",");   //将用户信息转变为JSON传递给客户端
-                i++;
+            i++;
         }
         out.write("]}");
     }
