@@ -1,8 +1,8 @@
-package servlets;
+package servlet;
 
 import com.alibaba.fastjson.JSON;
-import dao.UserForunmDao;
-import dao.UserForunmDaoImpl;
+
+import dao.UserForumDao;
 import domain.Message;
 import domain.User;
 
@@ -15,7 +15,7 @@ import java.io.PrintWriter;
 import java.io.Serializable;
 import java.util.List;
 
-public class Link  extends HttpServlet {
+public class ShowUsers  extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doPost(req, resp);
@@ -27,10 +27,10 @@ public class Link  extends HttpServlet {
 
         User user = (User) req.getSession().getAttribute("user");   //改一改这句，从服务器端获得分会名称
         UserForumDao userforumdao = new UserForumDao();
-        Forums forums =  userforumdao.searchForum(user);
+        Forums forums =  userforumdao.searchForum(user.getUsername());
         //下面是将选了该分会用户数转变为jaso语句传递给客户端
-        UserForunmDao userForunmDao = new UserForunmDaoImpl();
-        List<User> users= userForunmDao.SearchUsers(forums.searchForum(User.getUsername()));
+        UserForumDao userForunmDao = new UserForumDao();
+        List<User> users= userForunmDao.SearchUsers(forums.getForumnama(user));
         PrintWriter out = null;
         out = resp.getWriter();
         out.write("{\"num\":\""+users.size()+"\",");
