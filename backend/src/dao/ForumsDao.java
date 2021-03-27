@@ -34,7 +34,7 @@ public class ForumsDao {
         }
         return list;
     }
-    
+
     public Forums findForums(String forumname){
         String sql = "select * from forums where forumname = "+ "\"" +forumname + "\"" +";";
         Forums forums = new Forums();
