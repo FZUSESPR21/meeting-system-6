@@ -15,7 +15,7 @@ public class UserDao {
 
     public boolean findUser(User user){
         boolean ishave = false;
-        String sql = "select * from users from where username = "+ "\"" +user.getUsername() + "\"" +";";
+        String sql = "select * from users where username = "+ "\"" +user.getUsername() + "\"" + " and password = "+ "\"" +user.getPassword() + "\""+";";
         try {
             conn = DBUtil.getConnection();
             Statement stmt = conn.createStatement();
