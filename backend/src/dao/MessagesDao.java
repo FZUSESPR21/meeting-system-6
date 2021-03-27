@@ -2,6 +2,8 @@ package dao;
 import java.sql.*;
 import java.util.ArrayList;
 
+import domain.Message;
+
 public class MessagesDao {
     public ArrayList<Message> getMessages(String forumName) {
         Connection conn = null;
@@ -18,7 +20,7 @@ public class MessagesDao {
 
             Message m;
             while(rs.next()){
-                String id = rs.getString(1);
+                int id = rs.getInt(1);
                 String message = rs.getString(2);
                 String forum = rs.getString(3);
                 m = new Message(id,message,forum);
@@ -49,7 +51,7 @@ public class MessagesDao {
 
             Message m;
             while(rs.next()){
-                String id = rs.getString(1);
+                int id = rs.getInt(1);
                 String message = rs.getString(2);
                 String forum = rs.getString(3);
                 m = new Message(id,message,forum);
@@ -77,7 +79,7 @@ public class MessagesDao {
             conn = DBUtil.getConnection();
             String sql = "insert into messages(messageid,message,forumname) values(?,?,?)";
             ps = conn.prepareStatement(sql);
-            ps.setString(1, m.getId());
+            ps.setInt(1, m.getId());
             ps.setString(2, m.getMessage());
             ps.setString(3, m.getForum());
             int result = ps.executeUpdate();
