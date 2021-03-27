@@ -40,11 +40,10 @@ public class AddMessage extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String req = request.getReader().readLine();
 		JSONObject jo = JSONObject.parseObject(req);
-		Message message = new Message(jo.getString("message"),jo.getString("forumname"));
+		Message message = new Message(0,jo.getString("message"),jo.getString("forumname"));
 		MessagesDao messagesDao = new MessagesDao();
 		messagesDao.addMessage(message);
 		
-		response.getWriter().write("{\"结果\":\"添加成功\"");
 		
 	}
 

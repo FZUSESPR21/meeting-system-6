@@ -14,9 +14,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter("/*")
+import domain.User;
+
+//@WebFilter("/*")
 public class AccessFilter implements Filter {
-    public EncodingFilter() {
+    public void EncodingFilter() {
 
     }
 
@@ -29,9 +31,6 @@ public class AccessFilter implements Filter {
     }
 
     public void doFilter(ServletRequest request, ServletResponse res, FilterChain chain) throws IOException, ServletException {
-        HttpServletRequest req = (HttpServletRequest) request;
-        HttpServletResponse response = (HttpServletResponse) response;
-
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse response = (HttpServletResponse) res;
 

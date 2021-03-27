@@ -1,8 +1,7 @@
-package servlets;
+package servlet;
 
 import com.alibaba.fastjson.JSONObject;
 import dao.UserDao;
-import dao.UserDaoImpl;
 import domain.User;
 
 import javax.servlet.ServletException;
@@ -22,7 +21,7 @@ public class SignUp extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String str = req.getReader().readLine();
-        UserDao userDao = new UserDaoImpl();
+        UserDao userDao = new UserDao();
         JSONObject jo = JSONObject.parseObject(str);
         User user = new User();
         user.setPassword(jo.getString("password"));
@@ -32,9 +31,9 @@ public class SignUp extends HttpServlet {
         out = resp.getWriter();
         if(userDao.addUser(user))
         {
-            out.write("{\"结果\":\"注册成功\"}");
+            out.write("{\"result\":\"success\"}");
         }
-        else out.write("{\"结果\":\"注册失败\"}");
+        else out.write("{\"result\":\"fail\"}");
     }
 
 }

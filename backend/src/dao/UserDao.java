@@ -1,8 +1,12 @@
+package dao;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+
+import domain.User;
 
 public class UserDao {
     Connection conn = null;
@@ -11,7 +15,7 @@ public class UserDao {
 
     public boolean findUser(User user){
         boolean ishave = false;
-        String sql = "select * from users from where username = "+ "\"" +user.getUsername() + "\"" +";";
+        String sql = "select * from users where username = "+ "\"" +user.getUsername() + "\"" + " and password = "+ "\"" +user.getPassword() + "\""+";";
         try {
             conn = DBUtil.getConnection();
             Statement stmt = conn.createStatement();
@@ -43,7 +47,7 @@ public class UserDao {
         }
     return user;
     }
-    public void addUser(User user){
+    public boolean addUser(User user){
         String sql = "insert into users values" + "(" + "\"" + user.getUsername() + "\""+","+ "\""+user.getPassword()+ "\""+","+ "\""+user.getIdentity()+ "\""+");";
         //System.out.println(sql);
         {
@@ -55,6 +59,7 @@ public class UserDao {
                 throwables.printStackTrace();
             }
         }
+		return false;
     }
 
 

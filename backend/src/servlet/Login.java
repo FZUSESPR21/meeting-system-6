@@ -51,12 +51,11 @@ public class Login extends HttpServlet {
 		UserDao userDao = new UserDao();
 		boolean isUser = userDao.findUser(user);
 		
-		request.getSession().setAttribute("username", jo.getString("username"));
-		request.getSession().setAttribute("password", jo.getString("password"));
+		request.getSession().setAttribute("user", user);
 		response.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();
-		if (isUser)	out.write("{\"结果\":\"登录成功\"}");
-		else out.write("{\"结果\":\"登录失败\"}");
+		if (isUser)	out.write("{\"result\":\"success\"}");
+		else out.write("{\"result\":\"fail\"}");
 	}
 
 }

@@ -32,7 +32,7 @@ public class UserForumDao {
         return b;
     }
 
-    public ArrayList<User> searchUserName(String forumName) {
+    public ArrayList<User> searchUsers(String forumName) {
         Connection conn = null;
         Statement stmt = null;
         ResultSet rs = null;
@@ -62,5 +62,35 @@ public class UserForumDao {
             DBUtil.close(rs,stmt,conn);
         }
         return userList;
+    }
+
+    public Forums searchForum(String userName) {
+        Connection conn = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+        Forums forum = null;
+
+        try{
+            conn = DBUtil.getConnection();
+            stmt = conn.createStatement();
+
+            String sql = "select * from user_forum where username=" + "\'" + userName + "\'";
+
+            rs = stmt.executeQuery(sql);
+
+            ForumsDao fDao = new ForumsDao();
+            while(rs.next()){
+                String forumName = rs.getString(2);
+                forum = fDao.findForums(forumName);
+            }
+
+        }
+        catch (Exception e){
+
+        }
+        finally {
+            DBUtil.close(rs,stmt,conn);
+        }
+        return forum;
     }
 }
