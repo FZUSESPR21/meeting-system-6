@@ -20,13 +20,29 @@ public class UserDao {
             conn = DBUtil.getConnection();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
-            if(rs!=null) ishave = true;
+            if(rs.next()) ishave = true;
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
     return ishave;
     }
+    
+    public boolean findUserName(User user){
+        boolean ishave = false;
+        String sql = "select * from users where username = "+ "\"" +user.getUsername() + "\"" + ";";
+        try {
+            conn = DBUtil.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            if(!rs.next()) ishave = true;
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    return ishave;
+    }
+    
     public User findUser(String username){
         String sql = "select * from users where username = "+ "\"" +username + "\"" +";";
         User user = new User();
