@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 //@WebServlet("/hello")
-public class HelloServlet extends HttpServlet {
+public class SignUp extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         doPost(request,response);
