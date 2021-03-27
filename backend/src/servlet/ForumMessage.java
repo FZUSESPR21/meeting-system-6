@@ -43,8 +43,8 @@ public class ForumMessage extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String req = request.getReader().readLine();
-		JSONObject jo = JSONObject.parseObject(req);
-		//JSONObject jo = JSONObject.parseObject("{\"forumname\":\"aa\"}");
+		//JSONObject jo = JSONObject.parseObject(req);
+		JSONObject jo = JSONObject.parseObject("{\"forumname\":\"aa\"}");
 		String forumnane = jo.getString("forumname");
 		
 		MessagesDao messageDao = new MessagesDao();

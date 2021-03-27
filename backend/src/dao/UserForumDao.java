@@ -2,6 +2,11 @@ package dao;
 import java.sql.*;
 import java.util.ArrayList;
 
+import domain.Forums;
+import domain.Message;
+import domain.User;
+import domain.UserForum;
+
 public class UserForumDao {
     public boolean addUserForum(UserForum uf) {
         Connection conn = null;
