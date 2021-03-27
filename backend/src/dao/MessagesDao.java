@@ -77,11 +77,11 @@ public class MessagesDao {
         boolean b = false;
         try{
             conn = DBUtil.getConnection();
-            String sql = "insert into messages(messageid,message,forumname) values(?,?,?)";
+            String sql = "insert into messages(message,forumname) values(?,?)";
             ps = conn.prepareStatement(sql);
-            ps.setInt(1, m.getId());
-            ps.setString(2, m.getMessage());
-            ps.setString(3, m.getForum());
+            //ps.setInt(1, m.getId());
+            ps.setString(1, m.getMessage());
+            ps.setString(2, m.getForum());
             int result = ps.executeUpdate();
             if (result != 0) {
                 System.out.println("插入成功！");
