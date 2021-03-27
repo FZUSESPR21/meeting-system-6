@@ -5,12 +5,6 @@ public class Message {
     private String message;
     private String forum;
 
-    public Message(String id,String message,String forum){
-        this.id = id;
-        this.message = message;
-        this.forum = forum;
-    }
-
     public String getMessage() {
         return message;
     }
