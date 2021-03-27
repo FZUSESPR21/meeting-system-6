@@ -1,8 +1,12 @@
+package dao;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+
+import domain.User;
 
 public class UserDao {
     Connection conn = null;
@@ -43,7 +47,7 @@ public class UserDao {
         }
     return user;
     }
-    public void addUser(User user){
+    public boolean addUser(User user){
         String sql = "insert into users values" + "(" + "\"" + user.getUsername() + "\""+","+ "\""+user.getPassword()+ "\""+","+ "\""+user.getIdentity()+ "\""+");";
         //System.out.println(sql);
         {
@@ -55,6 +59,7 @@ public class UserDao {
                 throwables.printStackTrace();
             }
         }
+		return false;
     }
 
 

@@ -1,3 +1,6 @@
+package domain;
+
+
 public class Forums {
     private String forumnama;
     private String theme;

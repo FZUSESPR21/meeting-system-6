@@ -1,11 +1,11 @@
 package domain;
 
 public class Message {
-    private String id;
+    private int id;
     private String message;
     private String forum;
 
-    public Message(String id,String message,String forum)
+    public Message(int id,String message,String forum)
     {
         this.id = id;
         this.message =message;
@@ -20,11 +20,11 @@ public class Message {
         this.message = message;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
