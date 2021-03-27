@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 import domain.Forums;
 
@@ -44,5 +45,29 @@ public class ForumsDao {
                 throwables.printStackTrace();
             }
         }
+    }
+    
+    public List<Forums> getAllForums() {
+    	String sqlString = "select * from forums";
+    	ArrayList<Forums> fs = new ArrayList<Forums>();
+    	try {
+			conn = DBUtil.getConnection();
+			Statement smt = conn.createStatement();
+			ResultSet rs = smt.executeQuery(sqlString);
+			Forums forums;
+			while (rs.next())
+			{
+				forums = new Forums();
+				forums.setForumnama(rs.getString("forumname"));
+                forums.setChairman(rs.getString("chairman"));
+                forums.setTheme(rs.getString("theme"));
+                forums.setTime(rs.getString("time"));
+                fs.add(forums);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+    	return fs;
     }
 }
